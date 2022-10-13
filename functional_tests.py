@@ -18,9 +18,9 @@ class BasicInstallTest(unittest.TestCase):
 
     def test_home_page_header(self):
         # В шапке сайта написано "Станислав Яловкин"
-        browser = self.browser.get("http://127.0.0.1:8000")
-        header = browser.find_element(By.TAG_NAME, "h1")
-        self.assertIn("Станислав Яловкин", header)
+        self.browser.get("http://127.0.0.1:8000")
+        header = self.browser.find_element(By.TAG_NAME, "h1")
+        self.assertIn("Станислав Яловкин", header.text)
 
 if __name__ == "__main__":
     unittest.main()

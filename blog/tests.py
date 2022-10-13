@@ -15,4 +15,12 @@ class HomePageTest(TestCase):
         html = response.content.decode("utf8")  
         self.assertTrue(html.startswith("<html>"))  
         self.assertIn("<title>Сайт Станислава Яловкина</title>", html)  
-        self.assertTrue(html.endswith("</html>")) 
+        self.assertTrue(html.endswith("</html>"))
+    
+    def test_home_page_contains_header(self):
+        request = HttpRequest()  
+        response = home_page(request)  
+        html = response.content.decode("utf8") 
+        self.assertTrue(html.startswith("<html>"))   
+        self.assertIn("<h1>Станислав Яловкин</h1>", html)
+        self.assertTrue(html.endswith("</html>"))
