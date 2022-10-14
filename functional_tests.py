@@ -22,5 +22,20 @@ class BasicInstallTest(unittest.TestCase):
         header = self.browser.find_element(By.TAG_NAME, "h1")
         self.assertIn("Станислав Яловкин", header.text)
 
+    def test_home_page_blog(self):
+        # Под шапкой должен быть расположен блог со статьями
+        self.browser.get("http://127.0.0.1:8000")
+        article_list = self.browser.find_element(By.CLASS_NAME, "article-list")
+        self.assertTrue(article_list)
+    
+    def test_home_page_articles_look_correct(self):
+        # У каждой статьи есть заголовок и один абзац с текстом
+        self.browser.get("http://127.0.0.1:8000")
+        article_title = self.browser.find_element(By.CLASS_NAME, "article-title")
+        article_summary = self.browser.find_element(By.CLASS_NANE, "article-summary")
+        self.assertTrue(article_title)
+        self.assertTrue(article_summary)
+
+
 if __name__ == "__main__":
     unittest.main()
