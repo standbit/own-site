@@ -1,8 +1,7 @@
+from multiprocessing import context
 from django.shortcuts import render
 from django.http import HttpResponse
 
 def home_page(request):
-    return HttpResponse("""<html>
-    <title>Сайт Станислава Яловкина</title>
-    <h1>Станислав Яловкин</h1>
-    </html>""")
+    context = {}
+    return render(request, "home_page.html", context)
