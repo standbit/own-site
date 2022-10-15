@@ -33,7 +33,7 @@ class BasicInstallTest(unittest.TestCase):
         # У каждой статьи есть заголовок и один абзац с текстом
         self.browser.get("http://127.0.0.1:8000")
         article_title = self.browser.find_element(By.CLASS_NAME, "article-title")
-        article_summary = self.browser.find_element(By.CLASS_NANE, "article-summary")
+        article_summary = self.browser.find_element(By.CLASS_NAME, "article-summary")
         self.assertTrue(article_title)
         self.assertTrue(article_summary)
 
