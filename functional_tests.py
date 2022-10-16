@@ -37,6 +37,16 @@ class BasicInstallTest(unittest.TestCase):
         self.assertTrue(article_title)
         self.assertTrue(article_summary)
 
+    def test_home_page_article_title_link_leads_to_article_page(self):
+        # После нажатия пользователем на заголовок статьи на главной странице
+        # открывается страница с полным текстом этой статьи 
+        self.browser.get("http://127.0.0.1:8000")
+        article_title = self.browser.find_element(By.CLASS_NAME, "article-title")
+        article_link = article_title.find_element(By.TAG_NAME, "a")    
+        self.browser.get(article_link.get_attribute("href"))
+        article_page_title = self.browser.find_element(By.CLASS_NAME, "article-title")
+        self.assertEqual(article_title.text, article_page_title.text)
+
 
 if __name__ == "__main__":
     unittest.main()
