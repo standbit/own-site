@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Article(models.Model):
     title = models.CharField(max_length=150)
     full_text = models.TextField()
@@ -8,4 +9,3 @@ class Article(models.Model):
     pubdate = models.DateTimeField()
     # slug = ... # todo
     # is_published = models.BooleanField() # todo
-

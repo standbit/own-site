@@ -6,7 +6,8 @@ import unittest
 class BasicInstallTest(unittest.TestCase):
 
     def setUp(self):
-        self.browser = webdriver.Chrome("/mnt/c/Users/stani/Downloads/chromedriver_win32101022/chromedriver.exe")
+        self.browser = webdriver.Chrome(
+            "/mnt/c/Users/stani/Downloads/chromedriver_win32101022/chromedriver.exe")
 
     def tearDown(self):
         self.browser.quit()
@@ -28,12 +29,16 @@ class BasicInstallTest(unittest.TestCase):
         self.browser.get("http://127.0.0.1:8000")
         article_list = self.browser.find_element(By.CLASS_NAME, "article-list")
         self.assertTrue(article_list)
-    
+
     def test_home_page_articles_look_correct(self):
         # У каждой статьи есть заголовок и один абзац с текстом
         self.browser.get("http://127.0.0.1:8000")
-        article_title = self.browser.find_element(By.CLASS_NAME, "article-title")
-        article_summary = self.browser.find_element(By.CLASS_NAME, "article-summary")
+        article_title = self.browser.find_element(
+            By.CLASS_NAME,
+            "article-title")
+        article_summary = self.browser.find_element(
+            By.CLASS_NAME,
+            "article-summary")
         self.assertTrue(article_title)
         self.assertTrue(article_summary)
 
@@ -41,10 +46,14 @@ class BasicInstallTest(unittest.TestCase):
         # После нажатия пользователем на заголовок статьи на главной странице
         # открывается страница с полным текстом этой статьи 
         self.browser.get("http://127.0.0.1:8000")
-        article_title = self.browser.find_element(By.CLASS_NAME, "article-title")
+        article_title = self.browser.find_element(
+            By.CLASS_NAME,
+            "article-title")
         article_link = article_title.find_element(By.TAG_NAME, "a")    
         self.browser.get(article_link.get_attribute("href"))
-        article_page_title = self.browser.find_element(By.CLASS_NAME, "article-title")
+        article_page_title = self.browser.find_element(
+            By.CLASS_NAME,
+            "article-title")
         self.assertEqual(article_title.text, article_page_title.text)
 
 

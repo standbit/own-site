@@ -21,35 +21,34 @@ class HomePageTest(TestCase):
             full_text="full_text2",
             pubdate=datetime.now(),
         )
-        request = HttpRequest()  
-        response = home_page(request)  
+        request = HttpRequest()
+        response = home_page(request)
         html = response.content.decode("utf8")
         self.assertIn("title1", html)
         self.assertIn("summary1", html)
         self.assertNotIn("full-text1", html)
-        
+
         self.assertIn("title2", html)
         self.assertIn("summary2", html)
-        self.assertNotIn("full-text2", html)  
-
+        self.assertNotIn("full-text2", html)
 
     def test_root_url_resolves_to_home_page_view(self):
-        found = resolve("/")  
+        found = resolve("/")
         self.assertEqual(found.func, home_page)
 
     def test_home_page_returns_correct_html(self):
-        request = HttpRequest()  
-        response = home_page(request)  
-        html = response.content.decode("utf8")  
-        self.assertTrue(html.startswith("<html>"))  
-        self.assertIn("<title>Сайт Станислава Яловкина</title>", html)  
+        request = HttpRequest()
+        response = home_page(request)
+        html = response.content.decode("utf8")
+        self.assertTrue(html.startswith("<html>"))
+        self.assertIn("<title>Сайт Станислава Яловкина</title>", html)
         self.assertTrue(html.endswith("</html>"))
-    
+
     def test_home_page_contains_header(self):
-        request = HttpRequest()  
-        response = home_page(request)  
-        html = response.content.decode("utf8") 
-        self.assertTrue(html.startswith("<html>"))   
+        request = HttpRequest()
+        response = home_page(request)
+        html = response.content.decode("utf8")
+        self.assertTrue(html.startswith("<html>"))
         self.assertIn("<h1>Станислав Яловкин</h1>", html)
         self.assertTrue(html.endswith("</html>"))
 
@@ -83,12 +82,10 @@ class ArticleModelTest(TestCase):
         # проверь что 1 загруженная из базы статья == статья 1
         self.assertEqual(
             all_articles[0].title,
-            article1.title 
+            article1.title
         )
         # проверь что 2 загруженная из базы статья == статья 2
         self.assertEqual(
             all_articles[1].title,
-            article2.title 
+            article2.title
         )
-
-
