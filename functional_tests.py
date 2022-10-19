@@ -49,12 +49,15 @@ class BasicInstallTest(unittest.TestCase):
         article_title = self.browser.find_element(
             By.CLASS_NAME,
             "article-title")
-        article_link = article_title.find_element(By.TAG_NAME, "a")    
+        article_link = article_title.find_element(
+            By.TAG_NAME,
+            "a")
+        article_title_text = article_title.text
         self.browser.get(article_link.get_attribute("href"))
         article_page_title = self.browser.find_element(
             By.CLASS_NAME,
             "article-title")
-        self.assertEqual(article_title.text, article_page_title.text)
+        self.assertEqual(article_title_text, article_page_title.text)
 
 
 if __name__ == "__main__":

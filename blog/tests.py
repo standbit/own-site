@@ -15,9 +15,10 @@ class ArticlePageTest(TestCase):
             summary="summary 1",
             full_text="full_text 1",
             pubdate=datetime.now(),
+            slug="ura"
         )
         request = HttpRequest()
-        response = article_page(request, 1)
+        response = article_page(request, "ura")
         html = response.content.decode("utf8")
 
         self.assertIn("title 1", html)
