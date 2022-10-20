@@ -34,6 +34,12 @@ class BasicInstallTest(LiveServerTestCase):
         self.browser.get(self.live_server_url)
         header = self.browser.find_element(By.TAG_NAME, "h1")
         self.assertIn("Станислав Яловкин", header.text)
+    
+    def test_layout_and_styling(self):
+        self.browser.get(self.live_server_url)
+        self.browser.set_window_size(1024, 768)
+        header = self.browser.find_element(By.TAG_NAME, "h1")
+        self.assertTrue(header.location["x"] > 10)
 
     def test_home_page_blog(self):
         # Под шапкой должен быть расположен блог со статьями
@@ -69,6 +75,9 @@ class BasicInstallTest(LiveServerTestCase):
             By.CLASS_NAME,
             "article-title")
         self.assertEqual(article_title_text, article_page_title.text)
+
+    
+
 
 
 if __name__ == "__main__":
