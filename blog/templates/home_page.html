@@ -1,5 +1,7 @@
-<html>
-    <title>Сайт Станислава Яловкина</title>
+{% extends "base.html" %}
+{% block title %}Сайт Станислава Яловкина{% endblock %}
+{% block content %}
+    
     <h1>Станислав Яловкин</h1>
     <div class = "article-list">
         {% for article in articles %}
@@ -11,4 +13,4 @@
             </div>
         {% endfor %}
     </div>
-</html>
+{% endblock %}
