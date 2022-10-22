@@ -7,8 +7,17 @@
         <title>{% block title %}{% endblock %}</title>
     </head>
     <body>
-        {% block content %}
-        {% endblock %}
+        <div class="container">
+            <div class="row page-header">
+                <div class="col">
+                    <h1 class="avatar-top">
+                    <img src={% static "img/avatar2.jpg" %}>
+                    <span class="author-name">Станислав Яловкин</span>
+                    </h1>
+                </div>
+            </div>
+            {% block content %}
+            {% endblock %}
+        </div>
     </body> 
-    
 </html>
